@@ -33,7 +33,7 @@ export class UsersService {
     );
   }
 
-  async findOne(id: string): Promise<User|null>{
+  async findOne(id: string): Promise<User|undefined>{
     const user = await this.userRepository.findOne({ 
       where: { 
         id : id,
@@ -46,7 +46,7 @@ export class UsersService {
     return plainToClass(UserResponse, user);
   }
 
-  async update(id: string, updateUserJson: UserRequest): Promise<User|null> {
+  async update(id: string, updateUserJson: UserRequest): Promise<User|undefined> {
     await this.userRepository.update(id, updateUserJson);
     const user = this.findOne(id);
     return plainToClass(UserResponse, user);

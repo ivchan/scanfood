@@ -21,12 +21,12 @@ export class UsersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<UserResponse|null> {
+  findOne(@Param('id') id: string): Promise<UserResponse|undefined> {
     return this.usersService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateUserJson: UserRequest): Promise<UserResponse|null> {
+  update(@Param('id') id: string, @Body() updateUserJson: UserRequest): Promise<UserResponse|undefined> {
     return this.usersService.update(id, updateUserJson)
   }
 
