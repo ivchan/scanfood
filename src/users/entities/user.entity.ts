@@ -2,12 +2,14 @@ import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn } from 'typeorm';
 
 @Entity('user')
 export class User {
-    @PrimaryColumn()
-    key: string;
+    @PrimaryColumn({
+      type: 'uuid'
+    })
+    id: string;
 
     @Column({
         type: 'varchar',
-        length: 200,
+        length: 100,
     })
     userName: string;
 
@@ -16,4 +18,9 @@ export class User {
         length: 200,
     })
     emailAddress: string;
+
+    @Column({
+        default: true
+    })
+    isActive: boolean;
 }
