@@ -4,7 +4,7 @@ import { User } from "../entities/user.entity";
 @Exclude()
 export class UserResponse {
   @Expose()
-  id: string;
+  key: string;
 
   @Expose()
   emailAddress: string;
@@ -14,4 +14,7 @@ export class UserResponse {
 
   //hide
   isActive: boolean;
+
+  //hide
+  organization: string;
 }

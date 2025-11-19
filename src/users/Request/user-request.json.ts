@@ -2,7 +2,7 @@ import { IsBoolean, IsEmail, IsNotEmpty, IsString } from "class-validator"
 
 export class UserRequest {
   @IsString()
-  id: string;
+  key: string;
 
   @IsEmail()
   emailAddress: string;

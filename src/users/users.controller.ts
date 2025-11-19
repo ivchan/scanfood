@@ -20,19 +20,19 @@ export class UsersController {
     return this.usersService.findAllActive();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string): Promise<UserResponse|undefined> {
-    return this.usersService.findOne(id);
+  @Get(':key')
+  findOne(@Param('key') key: string): Promise<UserResponse|undefined> {
+    return this.usersService.findOne(key);
   }
 
-  @Put(':id')
-  update(@Param('id') id: string, @Body() updateUserJson: UserRequest): Promise<UserResponse|undefined> {
-    return this.usersService.update(id, updateUserJson)
+  @Put(':key')
+  update(@Param('key') key: string, @Body() updateUserJson: UserRequest): Promise<UserResponse|undefined> {
+    return this.usersService.update(key, updateUserJson)
   }
 
-  @Delete(':id')
+  @Delete(':key')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(id);
+  remove(@Param('key') key: string) {
+    return this.usersService.remove(key);
   }
 }

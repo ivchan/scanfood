@@ -1,33 +1,33 @@
 import { Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, Index } from 'typeorm';
 
-@Entity('td_user')
-export class User {
+@Entity('td_tasklist')
+export class Tasklist {
     @PrimaryColumn({
       name: 'key',
       type: 'uuid'
     })
     key: string;
 
+    @Index('idx_tasklist_org')
     @Column({
       name: 'org_key',
-      type: 'varchar'
+      type: 'uuid',
     })
-    @Index('idx_user_org')
     organization: string;
 
     @Column({
-        name: 'user_name',
+        name: 'tasklist_name',
         type: 'varchar',
         length: 100,
     })
-    userName: string;
+    tasklistName: string;
 
     @Column({
-        name: 'email_address',
-        type: 'varchar',
-        length: 200,
+      name: 'color',
+      type: 'varchar',
+      length: 10,
     })
-    emailAddress: string;
+    color: string;
 
     @Column({
         name: 'is_active',

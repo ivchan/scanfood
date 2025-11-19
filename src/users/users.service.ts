@@ -33,30 +33,30 @@ export class UsersService {
     );
   }
 
-  async findOne(id: string): Promise<User|undefined>{
+  async findOne(key: string): Promise<User|undefined>{
     const user = await this.userRepository.findOne({ 
       where: { 
-        id : id,
+        key : key,
         isActive: true,
       } 
     });
     if (!user) {
-     throw new NotFoundException(`User with ID [${id}] not found`); // Sets 404 + message
+     throw new NotFoundException(`User with ID [${key}] not found`); // Sets 404 + message
     }
     return plainToClass(UserResponse, user);
   }
 
-  async update(id: string, updateUserJson: UserRequest): Promise<User|undefined> {
-    await this.userRepository.update(id, updateUserJson);
-    const user = this.findOne(id);
+  async update(key: string, updateUserJson: UserRequest): Promise<User|undefined> {
+    await this.userRepository.update(key, updateUserJson);
+    const user = this.findOne(key);
     return plainToClass(UserResponse, user);
   }
 
-  async remove(id: string): Promise<void> {
-    const user = await this.findOne(id);
+  async remove(key: string): Promise<void> {
+    const user = await this.findOne(key);
     if (!user) {
-     throw new NotFoundException(`User with ID [${id}] not found`); // Sets 404 + message
+     throw new NotFoundException(`User with ID [${key}] not found`); // Sets 404 + message
     }
-    await this.userRepository.delete(id);
+    await this.userRepository.delete(key);
   }
 }
